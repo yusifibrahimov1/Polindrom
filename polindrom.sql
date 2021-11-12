@@ -7,11 +7,13 @@ IS
   d int;
   e int:= 1;
   m int;
+  f varchar(10);
 BEGIN
+  f:= LOWER(a);
   d:= LENGTH(a);
       LOOP
-        b:= SUBSTR(a,d,1);
-        c:= SUBSTR(a,e,1);
+        b:= SUBSTR(f,d,1);
+        c:= SUBSTR(f,e,1);
             IF b=c THEN
                m:=1;
             ELSIF b<>c THEN
@@ -21,7 +23,7 @@ BEGIN
         d:= d-1;
         e:= e+1;
         EXIT WHEN d=0;
-        EXIT WHEN e=LENGTH(a);
+        EXIT WHEN e=LENGTH(f);
       END LOOP;
   IF m=1 THEN
         dbms_output.put_line(a||' is Polindrom');
@@ -31,6 +33,6 @@ BEGIN
 END;
 
 /* EXECUTE PROCEDURE */
-
+/*
 EXECUTE PROCEDURE polindrom('123321');
 /
